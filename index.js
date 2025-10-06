@@ -107,8 +107,6 @@ function onReadyCommon() {
   }
 }
 
-// Listen to both names for compatibility (ready and clientReady) to avoid deprecation issues
-client.once('ready', onReadyCommon);
 client.once('clientReady', onReadyCommon);
 
 (async () => {
