@@ -288,7 +288,7 @@ import express from 'express';
 const app = express();
 app.get('/', (req, res) => res.send('Bot activo'));
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const port = process.env.PORT || 5000;
+app.listen(port, '0.0.0.0', () => {
   console.log(`Servidor Express activo en puerto ${port}`);
 });
