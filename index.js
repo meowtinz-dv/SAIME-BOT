@@ -2,6 +2,8 @@ import { Client, GatewayIntentBits, EmbedBuilder, REST, Routes, SlashCommandBuil
 import fs from 'fs';
 import noblox from 'noblox.js';
 import 'dotenv/config';
+import { keepAlive } from './keepAlive.js';
+keepAlive();
 
 // IMPORTANT: Keep 'client' and 'groupId' names unchanged for compatibility
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
