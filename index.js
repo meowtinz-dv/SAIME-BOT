@@ -1,48 +1,8 @@
-// ==============================
-// index.js - SAIME BOT
-// Compatible con Render y local
-// ==============================
-
-import express from "express";
-import { Client, GatewayIntentBits } from "discord.js";
-import "dotenv/config"; // variables de entorno (.env)
+import { Client, GatewayIntentBits, EmbedBuilder } from 'discord.js';
+import fs from 'fs';
+import noblox from 'noblox.js';
+import 'dotenv/config';
 import './register-commands.js';
-
-// ==============================
-// Servidor Express (Render)
-// ==============================
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("Bot activo 🚀");
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`🌐 Servidor Express activo en puerto ${port}`);
-});
-
-// ==============================
-// Cliente de Discord
-// ==============================
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers, // necesario para roles
-  ],
-});
-
-// Solo un evento ready
-client.once("ready", () => {
-  console.log(`✅ Bot de Discord conectado como ${client.user.tag}`);
-});
-
-// ==============================
-// Login del bot
-// ==============================
-client.login(process.env.DISCORD_TOKEN).catch((err) => {
-  console.error("❌ Error al conectar el bot:", err);
-});
 
 // IMPORTANT: Keep 'client' and 'groupId' names unchanged for compatibility
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
