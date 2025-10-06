@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits, EmbedBuilder } from 'discord.js';
 import fs from 'fs';
 import noblox from 'noblox.js';
 import 'dotenv/config';
+import './register-commands.js';
 
 // IMPORTANT: Keep 'client' and 'groupId' names unchanged for compatibility
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
