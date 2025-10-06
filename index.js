@@ -266,6 +266,23 @@ client.once('clientReady', onReadyCommon);
     });
 
     client.login(process.env.DISCORD_TOKEN);
+
+    // Graceful shutdown handlers
+    const shutdown = async (signal) => {
+      console.log(`\n${signal} recibido. Apagando el bot correctamente...`);
+      try {
+        const emb = crearEmbedSimple({ title: '🔴 Sistema apagado', color: 0xE74C3C, description: 'El bot ha sido desconectado.' });
+        await enviarRegistro(emb);
+      } catch (e) {
+        console.error('Error al enviar mensaje de apagado:', e?.message || e);
+      }
+      client.destroy();
+      console.log('Bot desconectado correctamente.');
+      process.exit(0);
+    };
+
+    process.on('SIGINT', () => shutdown('SIGINT'));
+    process.on('SIGTERM', () => shutdown('SIGTERM'));
   } catch (err) {
     console.error('❌ Error al iniciar el bot:', err);
     // Try to notify in configured channel
