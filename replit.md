@@ -34,8 +34,20 @@ The following secrets must be configured:
 
 ## Setup Status
 - Dependencies installed ✓
-- Environment variables needed ✗
-- Workflow configured ✗
+- Environment variables configured ✓
+- Workflow configured ✓
+- Bot running successfully ✓
+
+## Important Notes
+- The bot connects to both Discord and Roblox on startup
+- Express health check server runs on port 5000
+- Commands are registered automatically on startup
+- If GUILD_ID is provided, commands register instantly; otherwise takes up to 1 hour globally
+
+## Deployment Notes
+This Discord bot is a long-running console application with a health check endpoint. For production deployment:
+- Use VM deployment type (not autoscale) to keep the bot always running
+- The Express server on port 5000 provides a health check endpoint at `/`
 
 ## Last Updated
-October 6, 2025 - Initial import and setup
+October 6, 2025 - Initial import and setup completed
